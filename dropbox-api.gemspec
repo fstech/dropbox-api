@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = Dropbox::API::VERSION
   s.authors     = ["Marcin Bunsch"]
   s.email       = ["marcin@futuresimple.com"]
-  s.homepage    = ""
+  s.homepage    = "http://github.com/futuresimple/dropbox-api"
   s.summary     = "A Ruby client for the DropBox REST API."
   s.description = "To deliver a more Rubyesque experience when using the DropBox API."
 
