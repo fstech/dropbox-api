@@ -25,6 +25,30 @@ describe Dropbox::API::Client do
 
   end
 
+  describe "#find" do
+
+    before do
+      @filename = "test/spec-find-file-test-#{Time.now.to_i}.txt"
+      @file = @client.upload @filename, "spec file"
+
+      @dirname = "test/spec-find-dir-test-#{Time.now.to_i}"
+      @dir = @client.mkdir @dirname
+    end
+
+    it "returns a single file" do
+      response = @client.find(@filename)
+      response.path.should == @file.path
+      response.should be_an_instance_of(Dropbox::API::File)
+    end
+
+    it "returns a single directory" do
+      response = @client.find(@dirname)
+      response.path.should == @dir.path
+      response.should be_an_instance_of(Dropbox::API::Dir)
+    end
+
+  end
+
   describe "#ls" do
 
     it "returns an array of files and dirs" do
