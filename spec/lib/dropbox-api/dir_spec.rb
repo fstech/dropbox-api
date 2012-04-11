@@ -4,7 +4,7 @@ describe Dropbox::API::Dir do
 
   before do
     @client = Dropbox::Spec.instance
-    @dirname = "test/spec-dir-test-#{Time.now.to_i}"
+    @dirname = "#{Dropbox::Spec.test_dir}/spec-dir-test-#{Time.now.to_i}"
     @dir = @client.mkdir @dirname
   end
 

@@ -4,7 +4,7 @@ describe Dropbox::API::File do
 
   before do
     @client = Dropbox::Spec.instance
-    @filename = "test/spec-test-#{Time.now.to_i}.txt"
+    @filename = "#{Dropbox::Spec.test_dir}/spec-test-#{Time.now.to_i}.txt"
     @file = @client.upload @filename, "spec file"
   end
 

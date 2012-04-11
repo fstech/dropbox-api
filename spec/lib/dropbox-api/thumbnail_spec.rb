@@ -6,7 +6,7 @@ describe Dropbox::API::File do
   before do
     @io       = StringIO.new
     @client   = Dropbox::Spec.instance
-    @filename = "test/spec-test-#{Time.now.to_i}.jpg"
+    @filename = "#{Dropbox::Spec.test_dir}/spec-test-#{Time.now.to_i}.jpg"
     jpeg      = File.read("spec/fixtures/dropbox.jpg")
     @file     = @client.upload @filename, jpeg
   end

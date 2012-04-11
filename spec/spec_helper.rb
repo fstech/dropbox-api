@@ -12,3 +12,11 @@ module Dropbox
 end
 
 Dir.glob("#{File.dirname(__FILE__)}/support/*.rb").each { |f| require f }
+
+# Clean up after specs, remove test-directory
+RSpec.configure do |config|
+  config.after(:all) do
+    test_dir = Dropbox::Spec.instance.find(Dropbox::Spec.test_dir)
+    test_dir.destroy unless test_dir.is_deleted?
+  end
+end

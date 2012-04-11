@@ -11,3 +11,4 @@ Dropbox::Spec.secret = config['secret']
 Dropbox::Spec.namespace = Time.now.to_i
 Dropbox::Spec.instance  = Dropbox::API::Client.new(:token  => Dropbox::Spec.token,
                                                    :secret => Dropbox::Spec.secret)
+Dropbox::Spec.test_dir = "test-#{Time.now.to_i}"
