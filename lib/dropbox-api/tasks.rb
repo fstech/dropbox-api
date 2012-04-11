@@ -33,9 +33,9 @@ module Dropbox
             access_token  = request_token.get_access_token(:oauth_verifier => token)
 
             puts "\nAuthorization complete!:\n\n"
-            puts "  Dropbox::Api::Config.app_key    = '#{consumer.key}'"
-            puts "  Dropbox::Api::Config.app_secret = '#{consumer.secret}'"
-            puts "  client = Dropbox::Api::Client.new(:token  => '#{access_token.token}', :secret => '#{access_token.secret}')"
+            puts "  Dropbox::API::Config.app_key    = '#{consumer.key}'"
+            puts "  Dropbox::API::Config.app_secret = '#{consumer.secret}'"
+            puts "  client = Dropbox::API::Client.new(:token  => '#{access_token.token}', :secret => '#{access_token.secret}')"
             puts "\n"
           end
         end
