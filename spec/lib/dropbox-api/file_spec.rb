@@ -21,7 +21,7 @@ describe Dropbox::API::File do
     end
 
   end
-
+  
   describe "#move" do
 
     it "moves the file properly" do
@@ -89,6 +89,18 @@ describe Dropbox::API::File do
 
     end
 
+  end
+
+  describe "#copy_ref" do
+    
+    it "returns a copy_ref object" do
+      
+      result = @file.copy_ref
+      result.should be_an_instance_of(Dropbox::API::Object)
+      result.keys.sort.should == ['copy_ref', 'expires']
+      
+    end
+    
   end
 
   describe "#direct_url" do
