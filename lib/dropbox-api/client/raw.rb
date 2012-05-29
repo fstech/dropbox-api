@@ -29,6 +29,7 @@ module Dropbox
       add_method :get,  "/account/info",           :as => 'account', :root => false
 
       add_method :get,  "/metadata/:root/:path",   :as => 'metadata'
+      add_method :post, "/delta",                  :as => 'delta', :root => false
       add_method :get,  "/revisions/:root/:path",  :as => 'revisions'
       add_method :post, "/restore/:root/:path",    :as => 'restore'
       add_method :get,  "/search/:root/:path",     :as => 'search'

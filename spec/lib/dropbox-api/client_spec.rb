@@ -126,6 +126,19 @@ describe Dropbox::API::Client do
 
   end
 
+  describe "#delta" do
+
+    it "receives an object with a cursor and list of entries" do
+      filename = "test/delta-test-#{Dropbox::Spec.namespace}.txt"
+      @client.upload filename, "Some file"
+      response = @client.delta
+      response.cursor.should_not be_nil
+      response.entries.should_not be_nil
+      response.should be_an_instance_of(Dropbox::API::Object)
+    end
+
+  end
+
   describe "#download" do
 
     it "downloads a file from Dropbox" do
