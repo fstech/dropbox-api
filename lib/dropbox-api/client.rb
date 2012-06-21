@@ -43,7 +43,7 @@ module Dropbox
         results = raw.search({ :query => term }.merge(options))
         Dropbox::API::Object.convert(results, self)
       end
-
+            
     end
 
   end
