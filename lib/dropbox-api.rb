@@ -1,5 +1,5 @@
 require "oauth"
-require "yajl"
+require "multi_json"
 require "hashie"
 
 module Dropbox

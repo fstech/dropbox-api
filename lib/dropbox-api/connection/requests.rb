@@ -13,19 +13,19 @@ module Dropbox
             when 401
               raise Dropbox::API::Error::Unauthorized
             when 403
-              parsed = Yajl::Parser.parse(response.body)
+              parsed = MultiJson.decode(response.body)
               raise Dropbox::API::Error::Forbidden.new(parsed["error"])
             when 404
               raise Dropbox::API::Error::NotFound
             when 400, 406
-              parsed = Yajl::Parser.parse(response.body)
+              parsed = MultiJson.decode(response.body)
               raise Dropbox::API::Error.new(parsed["error"])
             when 300..399
               raise Dropbox::API::Error::Redirect
             when 500..599
               raise Dropbox::API::Error
             else
-              options[:raw] ? response.body : Yajl::Parser.parse(response.body)
+              options[:raw] ? response.body : MultiJson.decode(response.body)
           end
         end
 
