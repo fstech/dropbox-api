@@ -218,6 +218,24 @@ However, you can specify your own path:
 client.search 'pattern', :path => 'somedir' # => [#<Dropbox::API::File>, #<Dropbox::API::Dir>]
 ```
 
+### Dropbox::API::Client#delta
+
+Returns a cursor and a list of files that have changed since the cursor was generated.
+
+```ruby
+delta = client.delta 'abc123'
+delta.cursor # => 'def456'
+delta.entries # => [#<Dropbox::API::File>, #<Dropbox::API::Dir>]
+```
+
+When called without a cursor, it returns all the files.
+
+```ruby
+delta = client.delta 'abc123'
+delta.cursor # => 'abc123'
+delta.entries # => [#<Dropbox::API::File>, #<Dropbox::API::Dir>]
+```
+
 Dropbox::API::File and Dropbox::API::Dir methods
 ----------------------------
 

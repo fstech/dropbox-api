@@ -153,19 +153,6 @@ describe Dropbox::API::Client do
 
   end
 
-  describe "#delta" do
-
-    it "receives an object with a cursor and list of entries" do
-      filename = "test/delta-test-#{Dropbox::Spec.namespace}.txt"
-      @client.upload filename, "Some file"
-      response = @client.delta
-      response.cursor.should_not be_nil
-      response.entries.should_not be_nil
-      response.should be_an_instance_of(Dropbox::API::Object)
-    end
-
-  end
-
   describe "#download" do
 
     it "downloads a file from Dropbox" do
@@ -180,6 +167,35 @@ describe Dropbox::API::Client do
       }.should raise_error(Dropbox::API::Error::NotFound)
     end
 
+  end
+
+  describe "#delta" do
+    it "returns a cursor and list of files" do
+      filename = "#{Dropbox::Spec.test_dir}/delta-test-#{Dropbox::Spec.namespace}.txt"
+      @client.upload filename, 'Some file'
+      response = @client.delta
+      cursor, files = response.cursor, response.entries
+      cursor.should be_an_instance_of(String)
+      files.should be_an_instance_of(Array)
+      files.first.should be_an_instance_of(Dropbox::API::File)
+    end
+
+    it "returns the files that have changed since the cursor was made" do
+      filename = "#{Dropbox::Spec.test_dir}/delta-test-#{Dropbox::Spec.namespace}.txt"
+      delete_filename = "#{Dropbox::Spec.test_dir}/delta-test-delete-#{Dropbox::Spec.namespace}.txt"
+      @client.upload delete_filename, 'Some file'
+      response = @client.delta
+      cursor, files = response.cursor, response.entries
+      files.last.path.should == delete_filename
+      files.last.destroy
+      @client.upload filename, 'Another file'
+      response = @client.delta(cursor)
+      cursor, files = response.cursor, response.entries
+      files.length.should == 2
+      files.first.is_deleted.should == true
+      files.first.path.should == delete_filename
+      files.last.path.should == filename
+    end
   end
 
 end
