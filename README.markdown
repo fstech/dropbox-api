@@ -206,7 +206,7 @@ client.download 'file.txt' # => 'file body'
 
 When provided a pattern, returns a list of files or directories within that path
 
-Be default is searches the root path:
+By default it searches the root path:
 
 ```ruby
 client.search 'pattern' # => [#<Dropbox::API::File>, #<Dropbox::API::Dir>]
