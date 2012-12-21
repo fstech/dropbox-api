@@ -63,14 +63,13 @@ consumer = Dropbox::API::OAuth.consumer(:authorize)
 request_token = consumer.get_request_token
 request_token.authorize_url(:oauth_callback => 'http://yoursite.com/callback')
 # Here the user goes to Dropbox, authorizes the app and is redirected
-# The oauth_token will be available in the params
-request_token.get_access_token(:oauth_verifier => oauth_token)
+result = request_token.get_access_token(:oauth_verifier => oauth_token)
 ```
 
 Now that you have the oauth token and secret, you can create a new instance of the Dropbox::API::Client, like this:
 
 ```ruby
-client = Dropbox::API::Client.new :token => token, :secret => secret
+client = Dropbox::API::Client.new :token => result.token, :secret => result.secret
 ```
 
 Rake-based authorization
