@@ -61,8 +61,13 @@ on how to do this:
 ```ruby
 consumer = Dropbox::API::OAuth.consumer(:authorize)
 request_token = consumer.get_request_token
+# Store the token and secret so after redirecting we have the same request token
+session[:token] = request_token.token
+session[:token_secret] = request_token.secret
 request_token.authorize_url(:oauth_callback => 'http://yoursite.com/callback')
 # Here the user goes to Dropbox, authorizes the app and is redirected
+hash = { oauth_token: session[:token], oauth_token_secret: session[:token_secret]}
+request_token  = OAuth::RequestToken.from_hash(consumer, hash)
 result = request_token.get_access_token(:oauth_verifier => oauth_token)
 ```
 
