@@ -79,4 +79,22 @@ describe Dropbox::API::Connection do
     end
 
   end
+
+  describe "errors" do
+
+    it "recovers error with rescue statement modifier" do
+      expect { raise Dropbox::API::Error rescue nil }.to_not raise_error(Dropbox::API::Error)
+    end
+
+    it "recovers any kind of errors with the generic error" do
+      expect do
+        begin
+          raise Dropbox::API::Error::Forbidden
+        rescue Dropbox::API::Error
+        end
+      end.to_not raise_error
+    end
+
+  end
+
 end
