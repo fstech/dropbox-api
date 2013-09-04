@@ -14,6 +14,11 @@ module Dropbox
         end
       end
 
+      def direct_url(options = {})
+        response = client.raw.shares({ :path => self.path, :short_url => false }.merge(options))
+        Dropbox::API::Object.init(response, client)
+      end
+
     end
 
   end

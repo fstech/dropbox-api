@@ -15,16 +15,6 @@ module Dropbox
         self.update response
       end
 
-      def share_url(options = {})
-        response = client.raw.shares({ :path => self.path }.merge(options))
-        Dropbox::API::Object.init(response, client)
-      end
-
-      def direct_url(options = {})
-        response = client.raw.media({ :path => self.path }.merge(options))
-        Dropbox::API::Object.init(response, client)
-      end
-
       def thumbnail(options = {})
         client.raw.thumbnails({ :path => self.path }.merge(options))
       end
@@ -36,6 +26,11 @@ module Dropbox
       
       def download
         client.download(self.path)
+      end
+
+      def direct_url(options = {})
+        response = client.raw.media({ :path => self.path }.merge(options))
+        Dropbox::API::Object.init(response, client)
       end
 
     end
