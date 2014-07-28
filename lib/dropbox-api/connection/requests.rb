@@ -31,10 +31,10 @@ module Dropbox
             when 300..399
               raise Dropbox::API::Error::Redirect.new("#{status} - Redirect Error")
             when 503
-              if response.body && response.headers
+              if response.body && response.header['Retry-After']
                 parsed = MultiJson.decode(response.body)
-                header_parse = MultiJson.decode(response.headers)
-                error_message = "#{parsed["error"]}. Retry after: #{header_parse['Retry-After']}"
+                header_parse = MultiJson.decode(response.header['Retry-After'])
+                error_message = "#{parsed["error"]}. Retry after: #{header_parse}"
                 raise Dropbox::API::Error.new("503 - #{error_message}")
               end
               raise Dropbox::API::Error.new("503 - Service Unavailable")
