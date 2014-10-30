@@ -1,0 +1,5 @@
+app_key: '4h2z7bkqpoxnrk5'    # CONSUMER KEY
+app_secret: 'jm01iazkteh0iox' # CONSUMER SECRET
+token: 'uaq3brdzaspkyyel'      # ACCESS TOKEN
+secret: 'ttg5h86znfxxfgf'   # ACCESS SECRET
+mode: 'dropbox'   # 'sandbox' or 'dropbox'

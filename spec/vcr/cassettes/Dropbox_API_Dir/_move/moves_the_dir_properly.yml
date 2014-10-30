@@ -1,0 +1,120 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.dropbox.com/1/fileops/create_folder
+    body:
+      encoding: US-ASCII
+      string: path=dir-spec-tests&root=dropbox
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OAuth gem v0.4.7
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Authorization:
+      - XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 10 Feb 2014 20:39:20 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - gvc=MTU2ODkwNDYyMzM1OTkyNDIzMzA1ODI3MTgzNjIzNTk0MjE5Nzgw; expires=Sat, 09
+        Feb 2019 20:39:20 GMT; Path=/; httponly
+      X-Server-Response-Time:
+      - '166'
+      X-Dropbox-Request-Id:
+      - ee06cff64bd5d150876b12ccaa1faa96
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Dropbox-Http-Protocol:
+      - None
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Requestid:
+      - 9126ad34387e601acdeb488205d66d8b
+    body:
+      encoding: UTF-8
+      string: '{"revision": 91, "rev": "5b1f47d8b3", "thumb_exists": false, "bytes":
+        0, "modified": "Mon, 10 Feb 2014 20:39:20 +0000", "path": "/dir-spec-tests",
+        "is_dir": true, "icon": "folder", "root": "dropbox", "size": "0 bytes"}'
+    http_version: 
+  recorded_at: Mon, 10 Feb 2014 20:39:21 GMT
+- request:
+    method: post
+    uri: https://api.dropbox.com/1/fileops/move
+    body:
+      encoding: US-ASCII
+      string: from_path=dir-spec-tests&root=dropbox&to_path=dir-spec-tests-copied
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OAuth gem v0.4.7
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Authorization:
+      - XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 10 Feb 2014 20:39:21 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - gvc=NDA2MzcyNDU0MTU1MDg0NDI1MDY4MzQ5NTQzNTIxMzg4NDQ0Mg%3D%3D; expires=Sat,
+        09 Feb 2019 20:39:21 GMT; Path=/; httponly
+      X-Server-Response-Time:
+      - '195'
+      X-Dropbox-Request-Id:
+      - 9708668e4c0dd084d536a94f7b933a48
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Dropbox-Http-Protocol:
+      - None
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Requestid:
+      - 4f7b247bff75d7483c0f88231d17c5e4
+    body:
+      encoding: UTF-8
+      string: '{"hash": "8ae13889439e1e5366c903a15c603fb2", "revision": 93, "rev":
+        "5d1f47d8b3", "thumb_exists": false, "bytes": 0, "modified": "Mon, 10 Feb
+        2014 20:39:21 +0000", "path": "/dir-spec-tests-copied", "is_dir": true, "icon":
+        "folder", "root": "dropbox", "contents": [], "size": "0 bytes"}'
+    http_version: 
+  recorded_at: Mon, 10 Feb 2014 20:39:23 GMT
+recorded_with: VCR 2.8.0

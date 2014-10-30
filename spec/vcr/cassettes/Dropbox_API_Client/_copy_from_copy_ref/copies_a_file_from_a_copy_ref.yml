@@ -1,0 +1,271 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://api-content.dropbox.com/1/files_put/dropbox/test/searchable-test-100.txt
+    body:
+      encoding: UTF-8
+      string: Some file
+    headers:
+      Content-Type:
+      - application/octet-stream
+      Content-Length:
+      - '9'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OAuth gem v0.4.7
+      Authorization:
+      - XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 10 Feb 2014 20:37:13 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '700'
+      X-Dropbox-Request-Id:
+      - 13fed770b1e673000382965948451195
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Requestid:
+      - ba304a70c007f85992d148424d090993
+    body:
+      encoding: UTF-8
+      string: '{"revision": 79, "rev": "4f1f47d8b3", "thumb_exists": false, "bytes":
+        9, "modified": "Mon, 10 Feb 2014 20:37:13 +0000", "client_mtime": "Mon, 10
+        Feb 2014 20:37:13 +0000", "path": "/test/searchable-test-100.txt", "is_dir":
+        false, "icon": "page_white_text", "root": "dropbox", "mime_type": "text/plain",
+        "size": "9 bytes"}'
+    http_version:
+  recorded_at: Mon, 10 Feb 2014 20:37:14 GMT
+- request:
+    method: get
+    uri: https://api.dropbox.com/1/search/dropbox/test?query=searchable-test-100
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OAuth gem v0.4.7
+      Authorization:
+      - XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 10 Feb 2014 20:37:15 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '44'
+      X-Dropbox-Request-Id:
+      - 93843b22cdb7dcfb19a15ba3c91229ac
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Dropbox-Http-Protocol:
+      - None
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Requestid:
+      - 946dd3f68f5336f1f90c6e707f12202a
+    body:
+      encoding: UTF-8
+      string: '[{"revision": 79, "rev": "4f1f47d8b3", "thumb_exists": false, "bytes":
+        9, "modified": "Mon, 10 Feb 2014 20:37:13 +0000", "client_mtime": "Mon, 10
+        Feb 2014 20:37:13 +0000", "path": "/test/searchable-test-100.txt", "is_dir":
+        false, "icon": "page_white_text", "root": "dropbox", "mime_type": "text/plain",
+        "size": "9 bytes"}]'
+    http_version:
+  recorded_at: Mon, 10 Feb 2014 20:37:16 GMT
+- request:
+    method: get
+    uri: https://api.dropbox.com/1/copy_ref/dropbox/test/searchable-test-100.txt
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OAuth gem v0.4.7
+      Authorization:
+      - XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 10 Feb 2014 20:37:16 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '56'
+      X-Dropbox-Request-Id:
+      - a12f849f408df903ef5d9d1caa7db354
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Dropbox-Http-Protocol:
+      - None
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Requestid:
+      - 4c00e26bccf6a3c96043686bc79bc91a
+    body:
+      encoding: UTF-8
+      string: '{"expires": "Wed, 03 Feb 2044 20:37:16 +0000", "copy_ref": "H0fYs2ZqODV4aGxlMmh6ag"}'
+    http_version:
+  recorded_at: Mon, 10 Feb 2014 20:37:17 GMT
+- request:
+    method: post
+    uri: https://api.dropbox.com/1/fileops/copy
+    body:
+      encoding: US-ASCII
+      string: from_copy_ref=H0fYs2ZqODV4aGxlMmh6ag&root=dropbox&to_path=test%2Fsearchable-test-100.txt.copied
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OAuth gem v0.4.7
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Authorization:
+      - XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 10 Feb 2014 20:37:17 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - gvc=NzI5Nzc0ODA1MzUzNjQ3OTYzNTYwMTI3MDc4OTYyNzUyODUzNDU%3D; expires=Sat, 09
+        Feb 2019 20:37:17 GMT; Path=/; httponly
+      X-Server-Response-Time:
+      - '192'
+      X-Dropbox-Request-Id:
+      - f7ce802110f310b92e0dc00c4e1b0482
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Dropbox-Http-Protocol:
+      - None
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Requestid:
+      - 2ed3d07f5764fce2dda96a3396c729fc
+    body:
+      encoding: UTF-8
+      string: '{"revision": 81, "rev": "511f47d8b3", "thumb_exists": false, "bytes":
+        9, "modified": "Mon, 10 Feb 2014 20:37:17 +0000", "client_mtime": "Mon, 10
+        Feb 2014 20:37:13 +0000", "path": "/test/searchable-test-100.txt.copied",
+        "is_dir": false, "icon": "page_white", "root": "dropbox", "mime_type": "application/octet-stream",
+        "size": "9 bytes"}'
+    http_version:
+  recorded_at: Mon, 10 Feb 2014 20:37:18 GMT
+- request:
+    method: get
+    uri: https://api.dropbox.com/1/search/dropbox/test?query=searchable-test-100.txt.copied
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OAuth gem v0.4.7
+      Authorization:
+      - XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 10 Feb 2014 20:37:19 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '47'
+      X-Dropbox-Request-Id:
+      - 145c1e5f4a85b67d5f470b78f153f656
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Dropbox-Http-Protocol:
+      - None
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Requestid:
+      - d40a993101b78718a5d42351d39122e0
+    body:
+      encoding: UTF-8
+      string: '[{"revision": 81, "rev": "511f47d8b3", "thumb_exists": false, "bytes":
+        9, "modified": "Mon, 10 Feb 2014 20:37:17 +0000", "client_mtime": "Mon, 10
+        Feb 2014 20:37:13 +0000", "path": "/test/searchable-test-100.txt.copied",
+        "is_dir": false, "icon": "page_white", "root": "dropbox", "mime_type": "application/octet-stream",
+        "size": "9 bytes"}]'
+    http_version:
+  recorded_at: Mon, 10 Feb 2014 20:37:20 GMT
+recorded_with: VCR 2.8.0

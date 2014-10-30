@@ -1,0 +1,115 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://api-content.dropbox.com/1/files_put/dropbox/qux.txt
+    body:
+      encoding: UTF-8
+      string: spec file
+    headers:
+      Content-Type:
+      - application/octet-stream
+      Content-Length:
+      - '9'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OAuth gem v0.4.7
+      Authorization:
+      - XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 10 Feb 2014 20:29:37 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '351'
+      X-Dropbox-Request-Id:
+      - 2d9f2fa379fe7c252768a27fb198c0d2
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Requestid:
+      - 9522be9cbb96d01b92cbeccf547d8574
+    body:
+      encoding: UTF-8
+      string: '{"revision": 55, "rev": "371f47d8b3", "thumb_exists": false, "bytes":
+        9, "modified": "Mon, 10 Feb 2014 19:16:34 +0000", "client_mtime": "Mon, 10
+        Feb 2014 19:16:34 +0000", "path": "/qux.txt", "is_dir": false, "icon": "page_white_text",
+        "root": "dropbox", "mime_type": "text/plain", "size": "9 bytes"}'
+    http_version:
+  recorded_at: Mon, 10 Feb 2014 20:29:38 GMT
+- request:
+    method: post
+    uri: https://api.dropbox.com/1/fileops/copy
+    body:
+      encoding: US-ASCII
+      string: from_path=qux.txt&root=dropbox&to_path=qux.txt.copied
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OAuth gem v0.4.7
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Authorization:
+      - XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 10 Feb 2014 20:29:38 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - gvc=NTAyMDIyMDE5NjE5NDgxNzM0NzM4ODA3Mzc0Nzc1NTI1ODIxMDA%3D; expires=Sat, 09
+        Feb 2019 20:29:38 GMT; Path=/; httponly
+      X-Server-Response-Time:
+      - '165'
+      X-Dropbox-Request-Id:
+      - d9d69046d8cfb319e4f7c00bae16c11a
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Dropbox-Http-Protocol:
+      - None
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Requestid:
+      - aa92bc03876004789fee72263e3c39fe
+    body:
+      encoding: UTF-8
+      string: '{"revision": 60, "rev": "3c1f47d8b3", "thumb_exists": false, "bytes":
+        9, "modified": "Mon, 10 Feb 2014 20:29:38 +0000", "client_mtime": "Mon, 10
+        Feb 2014 19:16:34 +0000", "path": "/qux.txt.copied", "is_dir": false, "icon":
+        "page_white", "root": "dropbox", "mime_type": "application/octet-stream",
+        "size": "9 bytes"}'
+    http_version:
+  recorded_at: Mon, 10 Feb 2014 20:29:39 GMT
+recorded_with: VCR 2.8.0

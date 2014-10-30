@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.dropbox.com/1/metadata/dropbox/baz.txt?list=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OAuth gem v0.4.7
+      Authorization:
+      - XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 10 Feb 2014 20:28:52 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '48'
+      X-Dropbox-Request-Id:
+      - b5f8955be8f9120b6d069336b5b14265
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Dropbox-Http-Protocol:
+      - None
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Requestid:
+      - 5e1d369db52c923798d2902ef863c677
+    body:
+      encoding: UTF-8
+      string: '{"revision": 43, "rev": "2b1f47d8b3", "thumb_exists": false, "bytes":
+        15, "modified": "Mon, 10 Feb 2014 18:28:30 +0000", "client_mtime": "Mon, 10
+        Feb 2014 18:28:30 +0000", "path": "/baz.txt", "is_dir": false, "icon": "page_white_text",
+        "root": "dropbox", "mime_type": "text/plain", "size": "15 bytes"}'
+    http_version:
+  recorded_at: Mon, 10 Feb 2014 20:28:53 GMT
+recorded_with: VCR 2.8.0

@@ -1,6 +1,10 @@
 require "yaml"
 
-config = YAML.load_file "spec/connection.yml"
+if ENV['RECORDING'] == 'true'
+  config = YAML.load_file "spec/connection.yml"
+else
+  config = YAML.load_file "spec/connection.offline.yml"
+end
 
 Dropbox::API::Config.app_key    = config['app_key']
 Dropbox::API::Config.app_secret = config['app_secret']

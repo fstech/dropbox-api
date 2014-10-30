@@ -1,0 +1,361 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://api-content.dropbox.com/1/files_put/dropbox/awesome-tests/delta-test-baz.txt
+    body:
+      encoding: UTF-8
+      string: Some file
+    headers:
+      Content-Type:
+      - application/octet-stream
+      Content-Length:
+      - '9'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OAuth gem v0.4.7
+      Authorization:
+      - XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 10 Feb 2014 20:47:35 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '757'
+      X-Dropbox-Request-Id:
+      - 03394603be4a506082c1d97cf49ffcb4
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Requestid:
+      - 59ae7bbdcc5064db81a1af424e6058c4
+    body:
+      encoding: UTF-8
+      string: '{"revision": 105, "rev": "691f47d8b3", "thumb_exists": false, "bytes":
+        9, "modified": "Mon, 10 Feb 2014 20:47:34 +0000", "client_mtime": "Mon, 10
+        Feb 2014 20:47:35 +0000", "path": "/awesome-tests/delta-test-baz.txt", "is_dir":
+        false, "icon": "page_white_text", "root": "dropbox", "mime_type": "text/plain",
+        "size": "9 bytes"}'
+    http_version:
+  recorded_at: Mon, 10 Feb 2014 20:47:36 GMT
+- request:
+    method: post
+    uri: https://api.dropbox.com/1/delta
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OAuth gem v0.4.7
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Authorization:
+      - XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 10 Feb 2014 20:47:36 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '50'
+      X-Dropbox-Request-Id:
+      - 979e547fc9cc43f443d971f43d35f999
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Dropbox-Http-Protocol:
+      - None
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Requestid:
+      - 58b6fdf5f58524661bbeb7ea10da3dad
+    body:
+      encoding: UTF-8
+      string: '{"has_more": false, "cursor": "AAH8DWQ5U_abxuz-zq9klgVXyKrILyLYjcasZYicZl5E_-pDmwyQct_-DKaCHhWVR7dNDbNdmxpoFMZl8xk-ZIJDmiOQGmitpnifzAHTfZyI1A",
+        "entries": [["/getting started.pdf", {"revision": 1, "rev": "11f47d8b3", "thumb_exists":
+        false, "bytes": 249159, "modified": "Mon, 10 Feb 2014 17:46:48 +0000", "client_mtime":
+        "Mon, 10 Feb 2014 17:46:48 +0000", "path": "/Getting Started.pdf", "is_dir":
+        false, "icon": "page_white_acrobat", "root": "dropbox", "mime_type": "application/pdf",
+        "size": "243.3 KB"}], ["/test-1392055876.txt", {"revision": 5, "rev": "51f47d8b3",
+        "thumb_exists": false, "bytes": 9, "modified": "Mon, 10 Feb 2014 18:11:24
+        +0000", "client_mtime": "Mon, 10 Feb 2014 18:11:24 +0000", "path": "/test-1392055876.txt",
+        "is_dir": false, "icon": "page_white_text", "root": "dropbox", "mime_type":
+        "text/plain", "size": "9 bytes"}], ["/test ,|!@#$%^&*{b}[].;''.,<>?:-1392055876.txt",
+        {"revision": 6, "rev": "61f47d8b3", "thumb_exists": false, "bytes": 9, "modified":
+        "Mon, 10 Feb 2014 18:11:25 +0000", "client_mtime": "Mon, 10 Feb 2014 18:11:25
+        +0000", "path": "/test ,|!@#$%^&*{b}[].;''.,<>?:-1392055876.txt", "is_dir":
+        false, "icon": "page_white_text", "root": "dropbox", "mime_type": "text/plain",
+        "size": "9 bytes"}], ["/test \u0142o\u0142\u0105\u00f3-1392055876.txt", {"revision":
+        7, "rev": "71f47d8b3", "thumb_exists": false, "bytes": 9, "modified": "Mon,
+        10 Feb 2014 18:11:26 +0000", "client_mtime": "Mon, 10 Feb 2014 18:11:26 +0000",
+        "path": "/test \u0142o\u0142\u0105\u00f3-1392055876.txt", "is_dir": false,
+        "icon": "page_white_text", "root": "dropbox", "mime_type": "text/plain", "size":
+        "9 bytes"}], ["/test.txt", {"revision": 9, "rev": "91f47d8b3", "thumb_exists":
+        false, "bytes": 9, "modified": "Mon, 10 Feb 2014 18:14:02 +0000", "client_mtime":
+        "Mon, 10 Feb 2014 18:14:02 +0000", "path": "/test.txt", "is_dir": false, "icon":
+        "page_white_text", "root": "dropbox", "mime_type": "text/plain", "size": "9
+        bytes"}], ["/test ,|!@#$%^&*{b}[].;''.,<>?:.txt", {"revision": 10, "rev":
+        "a1f47d8b3", "thumb_exists": false, "bytes": 9, "modified": "Mon, 10 Feb 2014
+        18:14:03 +0000", "client_mtime": "Mon, 10 Feb 2014 18:14:03 +0000", "path":
+        "/test ,|!@#$%^&*{b}[].;''.,<>?:.txt", "is_dir": false, "icon": "page_white_text",
+        "root": "dropbox", "mime_type": "text/plain", "size": "9 bytes"}], ["/test
+        \u0142o\u0142\u0105\u00f3.txt", {"revision": 11, "rev": "b1f47d8b3", "thumb_exists":
+        false, "bytes": 9, "modified": "Mon, 10 Feb 2014 18:14:04 +0000", "client_mtime":
+        "Mon, 10 Feb 2014 18:14:04 +0000", "path": "/test \u0142o\u0142\u0105\u00f3.txt",
+        "is_dir": false, "icon": "page_white_text", "root": "dropbox", "mime_type":
+        "text/plain", "size": "9 bytes"}], ["/foo.txt", {"revision": 13, "rev": "d1f47d8b3",
+        "thumb_exists": false, "bytes": 9, "modified": "Mon, 10 Feb 2014 18:14:12
+        +0000", "client_mtime": "Mon, 10 Feb 2014 18:12:21 +0000", "path": "/foo.txt",
+        "is_dir": false, "icon": "page_white_text", "root": "dropbox", "mime_type":
+        "text/plain", "size": "9 bytes"}], ["/baz.txt", {"revision": 43, "rev": "2b1f47d8b3",
+        "thumb_exists": false, "bytes": 15, "modified": "Mon, 10 Feb 2014 18:28:30
+        +0000", "client_mtime": "Mon, 10 Feb 2014 18:28:30 +0000", "path": "/baz.txt",
+        "is_dir": false, "icon": "page_white_text", "root": "dropbox", "mime_type":
+        "text/plain", "size": "15 bytes"}], ["/test-1392058752/spec-test-1392058752.jpg",
+        {"revision": 44, "rev": "2c1f47d8b3", "thumb_exists": true, "bytes": 12582,
+        "modified": "Mon, 10 Feb 2014 18:59:13 +0000", "client_mtime": "Mon, 10 Feb
+        2014 18:59:13 +0000", "path": "/test-1392058752/spec-test-1392058752.jpg",
+        "is_dir": false, "icon": "page_white_picture", "root": "dropbox", "mime_type":
+        "image/jpeg", "size": "12.3 KB"}], ["/test-1392058752", {"revision": 45, "rev":
+        "2d1f47d8b3", "thumb_exists": false, "bytes": 0, "modified": "Mon, 10 Feb
+        2014 18:59:13 +0000", "path": "/test-1392058752", "is_dir": true, "icon":
+        "folder", "root": "dropbox", "size": "0 bytes"}], ["/spec-test-1392058752.jpg",
+        {"revision": 67, "rev": "431f47d8b3", "thumb_exists": true, "bytes": 12582,
+        "modified": "Mon, 10 Feb 2014 20:30:20 +0000", "client_mtime": "Mon, 10 Feb
+        2014 20:30:20 +0000", "path": "/spec-test-1392058752.jpg", "is_dir": false,
+        "icon": "page_white_picture", "root": "dropbox", "mime_type": "image/jpeg",
+        "size": "12.3 KB"}], ["/dir-spec-tests-copied", {"revision": 93, "rev": "5d1f47d8b3",
+        "thumb_exists": false, "bytes": 0, "modified": "Mon, 10 Feb 2014 20:39:21
+        +0000", "path": "/dir-spec-tests-copied", "is_dir": true, "icon": "folder",
+        "root": "dropbox", "size": "0 bytes"}], ["/dir-spec-tests", {"revision": 96,
+        "rev": "601f47d8b3", "thumb_exists": false, "bytes": 0, "modified": "Mon,
+        10 Feb 2014 20:39:27 +0000", "path": "/dir-spec-tests", "is_dir": true, "icon":
+        "folder", "root": "dropbox", "size": "0 bytes"}], ["/qux.txt.copied", {"revision":
+        101, "rev": "651f47d8b3", "thumb_exists": false, "bytes": 9, "modified": "Mon,
+        10 Feb 2014 20:41:14 +0000", "client_mtime": "Mon, 10 Feb 2014 20:41:10 +0000",
+        "path": "/qux.txt.copied", "is_dir": false, "icon": "page_white", "root":
+        "dropbox", "mime_type": "application/octet-stream", "size": "9 bytes"}], ["/awesome-tests",
+        {"revision": 102, "rev": "661f47d8b3", "thumb_exists": false, "bytes": 0,
+        "modified": "Mon, 10 Feb 2014 20:41:49 +0000", "path": "/awesome-tests", "is_dir":
+        true, "icon": "folder", "root": "dropbox", "size": "0 bytes"}], ["/awesome-tests/foo.txt",
+        {"revision": 103, "rev": "671f47d8b3", "thumb_exists": false, "bytes": 9,
+        "modified": "Mon, 10 Feb 2014 20:42:38 +0000", "client_mtime": "Mon, 10 Feb
+        2014 18:12:21 +0000", "path": "/awesome-tests/foo.txt", "is_dir": false, "icon":
+        "page_white_text", "root": "dropbox", "mime_type": "text/plain", "size": "9
+        bytes"}], ["/awesome-tests/delta-test-foo.txt", {"revision": 104, "rev": "681f47d8b3",
+        "thumb_exists": false, "bytes": 9, "modified": "Mon, 10 Feb 2014 20:47:32
+        +0000", "client_mtime": "Mon, 10 Feb 2014 20:47:32 +0000", "path": "/awesome-tests/delta-test-foo.txt",
+        "is_dir": false, "icon": "page_white_text", "root": "dropbox", "mime_type":
+        "text/plain", "size": "9 bytes"}], ["/awesome-tests/delta-test-baz.txt", {"revision":
+        105, "rev": "691f47d8b3", "thumb_exists": false, "bytes": 9, "modified": "Mon,
+        10 Feb 2014 20:47:34 +0000", "client_mtime": "Mon, 10 Feb 2014 20:47:35 +0000",
+        "path": "/awesome-tests/delta-test-baz.txt", "is_dir": false, "icon": "page_white_text",
+        "root": "dropbox", "mime_type": "text/plain", "size": "9 bytes"}]], "reset":
+        true}'
+    http_version:
+  recorded_at: Mon, 10 Feb 2014 20:47:37 GMT
+- request:
+    method: post
+    uri: https://api.dropbox.com/1/fileops/delete
+    body:
+      encoding: US-ASCII
+      string: path=awesome-tests%2Fdelta-test-baz.txt&root=dropbox
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OAuth gem v0.4.7
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Authorization:
+      - XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 10 Feb 2014 20:47:37 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - gvc=MzA0MDkzNDIwNDM3NjE2NjMwMjk3NDM1MDA4MzgxMDc2OTEyOTAy; expires=Sat, 09
+        Feb 2019 20:47:37 GMT; Path=/; httponly
+      X-Server-Response-Time:
+      - '179'
+      X-Dropbox-Request-Id:
+      - 842fad3eb774b2d4e3f8cca9cb2e2434
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Dropbox-Http-Protocol:
+      - None
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Requestid:
+      - bf17a7efb7ce60baa1edfea9a3eb1367
+    body:
+      encoding: UTF-8
+      string: '{"is_deleted": true, "revision": 106, "rev": "6a1f47d8b3", "thumb_exists":
+        false, "bytes": 0, "modified": "Mon, 10 Feb 2014 20:47:37 +0000", "client_mtime":
+        "Wed, 31 Dec 1969 23:59:59 +0000", "path": "/awesome-tests/delta-test-baz.txt",
+        "is_dir": false, "icon": "page_white_text", "root": "dropbox", "mime_type":
+        "text/plain", "size": "0 bytes"}'
+    http_version:
+  recorded_at: Mon, 10 Feb 2014 20:47:38 GMT
+- request:
+    method: put
+    uri: https://api-content.dropbox.com/1/files_put/dropbox/awesome-tests/delta-test-bar.txt
+    body:
+      encoding: UTF-8
+      string: Another file
+    headers:
+      Content-Type:
+      - application/octet-stream
+      Content-Length:
+      - '12'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OAuth gem v0.4.7
+      Authorization:
+      - XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 10 Feb 2014 20:47:40 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '541'
+      X-Dropbox-Request-Id:
+      - 876c34745b4429ab7f6dafcbe2fc7d16
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Requestid:
+      - c6682f249ff508516442e12b2638c956
+    body:
+      encoding: UTF-8
+      string: '{"revision": 107, "rev": "6b1f47d8b3", "thumb_exists": false, "bytes":
+        12, "modified": "Mon, 10 Feb 2014 20:47:40 +0000", "client_mtime": "Mon, 10
+        Feb 2014 20:47:40 +0000", "path": "/awesome-tests/delta-test-bar.txt", "is_dir":
+        false, "icon": "page_white_text", "root": "dropbox", "mime_type": "text/plain",
+        "size": "12 bytes"}'
+    http_version:
+  recorded_at: Mon, 10 Feb 2014 20:47:41 GMT
+- request:
+    method: post
+    uri: https://api.dropbox.com/1/delta
+    body:
+      encoding: US-ASCII
+      string: cursor=AAH8DWQ5U_abxuz-zq9klgVXyKrILyLYjcasZYicZl5E_-pDmwyQct_-DKaCHhWVR7dNDbNdmxpoFMZl8xk-ZIJDmiOQGmitpnifzAHTfZyI1A
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OAuth gem v0.4.7
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Authorization:
+      - XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 10 Feb 2014 20:47:43 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '34'
+      X-Dropbox-Request-Id:
+      - 4d2b77601663c415db2bda99754088ea
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Dropbox-Http-Protocol:
+      - None
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Requestid:
+      - fca3f18b9121ceccbaf981327e1dfa23
+    body:
+      encoding: UTF-8
+      string: '{"has_more": false, "cursor": "AAEEdtIs8w3jyRiYmp2f067wZhJWZ-9Ap0i6LLuWcpRee5a9KB-e9LIFkmFsosWvqf-gEQR3dSzaOkG_JKKz638CatASXx-T7CR8jd-3aox0eA",
+        "entries": [["/awesome-tests/delta-test-baz.txt", null], ["/awesome-tests/delta-test-bar.txt",
+        {"revision": 107, "rev": "6b1f47d8b3", "thumb_exists": false, "bytes": 12,
+        "modified": "Mon, 10 Feb 2014 20:47:40 +0000", "client_mtime": "Mon, 10 Feb
+        2014 20:47:40 +0000", "path": "/awesome-tests/delta-test-bar.txt", "is_dir":
+        false, "icon": "page_white_text", "root": "dropbox", "mime_type": "text/plain",
+        "size": "12 bytes"}]], "reset": false}'
+    http_version:
+  recorded_at: Mon, 10 Feb 2014 20:47:44 GMT
+recorded_with: VCR 2.8.0

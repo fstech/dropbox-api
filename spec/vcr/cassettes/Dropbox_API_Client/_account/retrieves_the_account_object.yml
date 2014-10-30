@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.dropbox.com/1/account/info
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OAuth gem v0.4.7
+      Authorization:
+      - XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 10 Feb 2014 20:28:51 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '93'
+      X-Dropbox-Request-Id:
+      - f6a414b51683f6723616501cdf672bb2
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Dropbox-Http-Protocol:
+      - None
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Requestid:
+      - 6c8409eea6d85a8c7939830cf12c8a75
+    body:
+      encoding: UTF-8
+      string: '{"referral_link": "https://db.tt/j7i96lLO", "display_name": "Johnny
+        Testman", "uid": 266265733, "country": "GB", "quota_info": {"datastores":
+        0, "shared": 0, "quota": 2147483648, "normal": 274449}, "email": "testman@example.com"}'
+    http_version:
+  recorded_at: Mon, 10 Feb 2014 20:28:52 GMT
+recorded_with: VCR 2.8.0

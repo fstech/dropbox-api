@@ -1,10 +1,10 @@
 # encoding: utf-8
 require "spec_helper"
+require "tempfile"
 
-describe Dropbox::API::Client do
+describe Dropbox::API::Client, :vcr => true do
 
   before do
-    # pending
     @client = Dropbox::Spec.instance
   end
 
@@ -21,29 +21,22 @@ describe Dropbox::API::Client do
     it "retrieves the account object" do
       response = @client.account
       response.should be_an_instance_of(Dropbox::API::Object)
+      response.email.should eql 'testman@example.com'
     end
 
   end
 
   describe "#find" do
 
-    before do
-      @filename = "#{Dropbox::Spec.test_dir}/spec-find-file-test-#{Time.now.to_i}.txt"
-      @file = @client.upload @filename, "spec file"
-
-      @dirname = "#{Dropbox::Spec.test_dir}/spec-find-dir-test-#{Time.now.to_i}"
-      @dir = @client.mkdir @dirname
-    end
-
     it "returns a single file" do
-      response = @client.find(@filename)
-      response.path.should == @file.path
+      response = @client.find('baz.txt')
+      response.path.should == 'baz.txt'
       response.should be_an_instance_of(Dropbox::API::File)
     end
 
     it "returns a single directory" do
-      response = @client.find(@dirname)
-      response.path.should == @dir.path
+      response = @client.find('awesome-tests')
+      response.path.should == 'awesome-tests'
       response.should be_an_instance_of(Dropbox::API::Dir)
     end
 
@@ -51,16 +44,30 @@ describe Dropbox::API::Client do
 
   describe "#ls" do
 
-    it "returns an array of files and dirs" do
-      result = @client.ls
-      result.should be_an_instance_of(Array)
+    context "no value" do
+
+      it "returns an array of files and dirs" do
+        result = @client.ls
+        result.should be_an_instance_of(Array)
+      end
     end
 
-    it "returns a single item array of if we ls a file" do
-      result     = @client.ls(Dropbox::Spec.test_dir)
-      first_file = result.detect { |f| f.class == Dropbox::API::File }
-      result     = @client.ls first_file.path
-      result.should be_an_instance_of(Array)
+    context "a single file" do
+      it "returns a single item array of if we ls a file" do
+        result     = @client.ls('foo.txt')
+        first_file = result.detect { |f| f.class == Dropbox::API::File }
+        result     = @client.ls first_file.path
+        result.should be_an_instance_of(Array)
+      end
+    end
+
+    context "a directory" do
+      it "returns an item array of directory contents" do
+        result     = @client.ls('foo.txt')
+        first_file = result.detect { |f| f.class == Dropbox::API::File }
+        result     = @client.ls first_file.path
+        result.should be_an_instance_of(Array)
+      end
     end
 
   end
@@ -68,21 +75,21 @@ describe Dropbox::API::Client do
   describe "#mkdir" do
 
     it "returns an array of files and dirs" do
-      dirname  = "#{Dropbox::Spec.test_dir}/test-dir-#{Dropbox::Spec.namespace}"
+      dirname  = "awesome-tests"
       response = @client.mkdir dirname
       response.path.should == dirname
       response.should be_an_instance_of(Dropbox::API::Dir)
     end
 
     it "creates dirs with tricky characters" do
-      dirname  = "#{Dropbox::Spec.test_dir}/test-dir |!@\#$%^&*{b}[].;'.,<>?: #{Dropbox::Spec.namespace}"
+      dirname  = "awesome-tests-|!@\#$%^&*{b}[].;'.,<>?:"
       response = @client.mkdir dirname
       response.path.should == dirname.gsub(/[\\\:\?\*\<\>\"\|]+/, '')
       response.should be_an_instance_of(Dropbox::API::Dir)
     end
 
     it "creates dirs with utf8 characters" do
-      dirname  = "#{Dropbox::Spec.test_dir}/test-dir łółą #{Dropbox::Spec.namespace}"
+      dirname  = "awesome-tests-łółą"
       response = @client.mkdir dirname
       response.path.should == dirname
       response.should be_an_instance_of(Dropbox::API::Dir)
@@ -92,48 +99,108 @@ describe Dropbox::API::Client do
 
   describe "#upload" do
 
-    it "puts the file in dropbox" do
-      filename = "#{Dropbox::Spec.test_dir}/test-#{Dropbox::Spec.namespace}.txt"
-      response = @client.upload filename, "Some file"
-      response.path.should == filename
-      response.bytes.should == 9
+    context "a simple file" do
+      it "is uploaded" do
+        filename = "test.txt"
+        response = @client.upload filename, "Some file"
+        response.path.should == filename
+        response.bytes.should == 9
+      end
     end
 
-    it "uploads the file with tricky characters" do
-      filename = "#{Dropbox::Spec.test_dir}/test ,|!@\#$%^&*{b}[].;'.,<>?:-#{Dropbox::Spec.namespace}.txt"
-      response = @client.upload filename, "Some file"
-      response.path.should == filename
-      response.bytes.should == 9
+    context "a file with tricky characters" do
+      it "is uploaded" do
+        filename = "test ,|!@\#$%^&*{b}[].;'.,<>?:.txt"
+        response = @client.upload filename, "Some file"
+        response.path.should == filename
+        response.bytes.should == 9
+      end
     end
 
-    it "uploads the file with utf8" do
-      filename = "#{Dropbox::Spec.test_dir}/test łołąó-#{Dropbox::Spec.namespace}.txt"
-      response = @client.upload filename, "Some file"
-      response.path.should == filename
-      response.bytes.should == 9
+    context "a file with utf8" do
+      it "is uploaded" do
+        filename = "test łołąó.txt"
+        response = @client.upload filename, "Some file"
+        response.path.should == filename
+        response.bytes.should == 9
+      end
     end
+
+  end
+
+  describe "#chunked_upload" do
+
+    before do
+      @filename = "/tmp/dropbox-api-largefile-test"
+      @size = 5*1024*1024 # 5MB, to test the 4MB chunk size
+      @file = File.open(@filename, "w") {|f| f.write "a"*@size}
+    end
+
+    it "puts a 5MB file in dropbox", :vcr => { :match_requests_on => [:host] } do
+      pending 'Needs Chunked upload branch merged in'
+      filename = "#{Dropbox::Spec.test_dir}/test-5MB-#{Dropbox::Spec.namespace}.txt"
+      response = @client.chunked_upload filename, File.open(@filename)
+      if ENV['RECORDING'] == 'true'
+        response.path.should == filename
+      else
+        response.path.should == 'test-1410120674/test-5MB-1410120674.txt'
+      end
+      response.bytes.should == @size
+    end
+
+    it "yields current offset and upload id", :vcr => { :match_requests_on => [:host] } do
+      pending 'Needs Chunked upload branch merged in'
+      filename = "#{Dropbox::Spec.test_dir}/test-yield-#{Dropbox::Spec.namespace}.txt"
+      log_offset = ""
+      log_upload = ""
+      response = @client.chunked_upload filename, File.open(@filename) do |offset, upload|
+        offset.should be > 0
+        log_offset += "#{offset.to_s},"
+        log_upload += upload.inspect
+        upload[:upload_id].length.should eq(22)
+      end
+      if ENV['RECORDING'] == 'true'
+        response.path.should == filename
+      else
+        response.path.should == 'test-1410121457/test-yield-1410121457.txt'
+      end
+      response.bytes.should == @size
+      log_offset.should match(/[\d]{7},[\d]{7},/)
+      log_upload.should include("Dropbox::API::Object","upload_id=")
+    end
+
+    after do
+      FileUtils.rm @filename
+    end
+
   end
 
   describe "#search" do
 
-    let(:term) { "searchable-test-#{Dropbox::Spec.namespace}" }
-
-    before do
-      filename = "#{Dropbox::Spec.test_dir}/searchable-test-#{Dropbox::Spec.namespace}.txt"
-      @client.upload filename, "Some file"
-    end
+    let(:term) { "foo.txt" }
 
     after do
       @response.size.should == 1
       @response.first.class.should == Dropbox::API::File
     end
 
-    it "finds a file" do
-      @response = @client.search term, :path => "#{Dropbox::Spec.test_dir}"
+    context "with path" do
+      it "finds a file" do
+        @response = @client.search term, :path => "awesome-tests"
+      end
     end
 
-    it "works if leading slash is present in path" do
-      @response = @client.search term, :path => "/#{Dropbox::Spec.test_dir}"
+    context "path with leading slash" do
+      it "finds the file" do
+        @response = @client.search term, :path => "/awesome-tests"
+      end
+
+    end
+
+    context "no path given" do
+      it "finds the file if in root" do
+        @response = @client.search term
+      end
     end
 
   end
@@ -141,12 +208,12 @@ describe Dropbox::API::Client do
   describe "#copy_from_copy_ref" do
 
     it "copies a file from a copy_ref" do
-      filename = "test/searchable-test-#{Dropbox::Spec.namespace}.txt"
+      filename = "test/searchable-test-100.txt"
       @client.upload filename, "Some file"
-      response = @client.search "searchable-test-#{Dropbox::Spec.namespace}", :path => 'test'
+      response = @client.search "searchable-test-100", :path => 'test'
       ref = response.first.copy_ref['copy_ref']
       @client.copy_from_copy_ref ref, "#{filename}.copied"
-      response = @client.search "searchable-test-#{Dropbox::Spec.namespace}.txt.copied", :path => 'test'
+      response = @client.search "searchable-test-100.txt.copied", :path => 'test'
       response.size.should == 1
       response.first.class.should == Dropbox::API::File
     end
@@ -155,23 +222,24 @@ describe Dropbox::API::Client do
 
   describe "#download" do
 
-    it "downloads a file from Dropbox" do
-      @client.upload "#{Dropbox::Spec.test_dir}/test.txt", "Some file"
-      file = @client.download "#{Dropbox::Spec.test_dir}/test.txt"
-      file.should == "Some file"
+    context "a file" do
+      it "downloads a file" do
+        file = @client.download "awesome-tests/foo.txt"
+        file.should == "Some file"
+      end
     end
 
-    it "raises a 404 when a file is not found in Dropbox" do
-      lambda {
-        @client.download "#{Dropbox::Spec.test_dir}/no.txt"
-      }.should raise_error(Dropbox::API::Error::NotFound)
+    context "a non-existant file" do
+      it "raises a 404" do
+        expect { @client.download "awesome-tests/no.txt"}.to raise_error(Dropbox::API::Error::NotFound)
+      end
     end
 
   end
 
   describe "#delta" do
     it "returns a cursor and list of files" do
-      filename = "#{Dropbox::Spec.test_dir}/delta-test-#{Dropbox::Spec.namespace}.txt"
+      filename = "awesome-tests/delta-test-foo.txt"
       @client.upload filename, 'Some file'
       response = @client.delta
       cursor, files = response.cursor, response.entries
@@ -181,8 +249,8 @@ describe Dropbox::API::Client do
     end
 
     it "returns the files that have changed since the cursor was made" do
-      filename = "#{Dropbox::Spec.test_dir}/delta-test-#{Dropbox::Spec.namespace}.txt"
-      delete_filename = "#{Dropbox::Spec.test_dir}/delta-test-delete-#{Dropbox::Spec.namespace}.txt"
+      filename = "awesome-tests/delta-test-bar.txt"
+      delete_filename = "awesome-tests/delta-test-baz.txt"
       @client.upload delete_filename, 'Some file'
       response = @client.delta
       cursor, files = response.cursor, response.entries

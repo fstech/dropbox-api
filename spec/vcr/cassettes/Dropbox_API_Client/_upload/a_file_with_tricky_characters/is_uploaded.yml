@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://api-content.dropbox.com/1/files_put/dropbox/test%20,%7C!@%23$%25%5E&*%7Bb%7D%5B%5D.;'.,%3C%3E%3F:.txt
+    body:
+      encoding: UTF-8
+      string: Some file
+    headers:
+      Content-Type:
+      - application/octet-stream
+      Content-Length:
+      - '9'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OAuth gem v0.4.7
+      Authorization:
+      - XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 10 Feb 2014 20:29:09 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '350'
+      X-Dropbox-Request-Id:
+      - 840450db3d6ae86d60d3974ce1d68afa
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Requestid:
+      - a5631bf31c63466bfca10d40097501cd
+    body:
+      encoding: UTF-8
+      string: '{"revision": 10, "rev": "a1f47d8b3", "thumb_exists": false, "bytes":
+        9, "modified": "Mon, 10 Feb 2014 18:14:03 +0000", "client_mtime": "Mon, 10
+        Feb 2014 18:14:03 +0000", "path": "/test ,|!@#$%^&*{b}[].;''.,<>?:.txt", "is_dir":
+        false, "icon": "page_white_text", "root": "dropbox", "mime_type": "text/plain",
+        "size": "9 bytes"}'
+    http_version:
+  recorded_at: Mon, 10 Feb 2014 20:29:10 GMT
+recorded_with: VCR 2.8.0

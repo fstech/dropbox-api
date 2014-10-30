@@ -1,0 +1,115 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.dropbox.com/1/metadata/dropbox/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OAuth gem v0.4.7
+      Authorization:
+      - XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 10 Feb 2014 20:28:54 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '53'
+      X-Dropbox-Request-Id:
+      - 0bcf9c3b0548735a574ffdeb6a84b99f
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Dropbox-Http-Protocol:
+      - None
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Requestid:
+      - df5b9aade54268043c26c675f528c42a
+    body:
+      encoding: UTF-8
+      string: '{"hash": "d4154720cf2df1a7450b4a9614532ebc", "thumb_exists": false,
+        "bytes": 0, "path": "/", "is_dir": true, "size": "0 bytes", "root": "dropbox",
+        "contents": [{"revision": 2, "rev": "21f47d8b3", "thumb_exists": false, "bytes":
+        0, "modified": "Mon, 10 Feb 2014 18:11:20 +0000", "path": "/awesome-tests",
+        "is_dir": true, "icon": "folder", "root": "dropbox", "size": "0 bytes"}, {"revision":
+        3, "rev": "31f47d8b3", "thumb_exists": false, "bytes": 0, "modified": "Mon,
+        10 Feb 2014 18:11:21 +0000", "path": "/awesome-tests-!@#$%^&{b}[].;''.,",
+        "is_dir": true, "icon": "folder", "root": "dropbox", "size": "0 bytes"}, {"revision":
+        4, "rev": "41f47d8b3", "thumb_exists": false, "bytes": 0, "modified": "Mon,
+        10 Feb 2014 18:11:22 +0000", "path": "/awesome-tests-\u0142\u00f3\u0142\u0105",
+        "is_dir": true, "icon": "folder", "root": "dropbox", "size": "0 bytes"}, {"revision":
+        43, "rev": "2b1f47d8b3", "thumb_exists": false, "bytes": 15, "modified": "Mon,
+        10 Feb 2014 18:28:30 +0000", "client_mtime": "Mon, 10 Feb 2014 18:28:30 +0000",
+        "path": "/baz.txt", "is_dir": false, "icon": "page_white_text", "root": "dropbox",
+        "mime_type": "text/plain", "size": "15 bytes"}, {"revision": 57, "rev": "391f47d8b3",
+        "thumb_exists": false, "bytes": 0, "modified": "Mon, 10 Feb 2014 19:18:29
+        +0000", "path": "/dir-spec-tests", "is_dir": true, "icon": "folder", "root":
+        "dropbox", "size": "0 bytes"}, {"revision": 13, "rev": "d1f47d8b3", "thumb_exists":
+        false, "bytes": 9, "modified": "Mon, 10 Feb 2014 18:14:12 +0000", "client_mtime":
+        "Mon, 10 Feb 2014 18:12:21 +0000", "path": "/foo.txt", "is_dir": false, "icon":
+        "page_white_text", "root": "dropbox", "mime_type": "text/plain", "size": "9
+        bytes"}, {"revision": 1, "rev": "11f47d8b3", "thumb_exists": false, "bytes":
+        249159, "modified": "Mon, 10 Feb 2014 17:46:48 +0000", "client_mtime": "Mon,
+        10 Feb 2014 17:46:48 +0000", "path": "/Getting Started.pdf", "is_dir": false,
+        "icon": "page_white_acrobat", "root": "dropbox", "mime_type": "application/pdf",
+        "size": "243.3 KB"}, {"revision": 55, "rev": "371f47d8b3", "thumb_exists":
+        false, "bytes": 9, "modified": "Mon, 10 Feb 2014 19:16:34 +0000", "client_mtime":
+        "Mon, 10 Feb 2014 19:16:34 +0000", "path": "/qux.txt", "is_dir": false, "icon":
+        "page_white_text", "root": "dropbox", "mime_type": "text/plain", "size": "9
+        bytes"}, {"revision": 46, "rev": "2e1f47d8b3", "thumb_exists": true, "bytes":
+        12582, "modified": "Mon, 10 Feb 2014 19:01:24 +0000", "client_mtime": "Mon,
+        10 Feb 2014 19:01:24 +0000", "path": "/spec-test-1392058752.jpg", "is_dir":
+        false, "icon": "page_white_picture", "root": "dropbox", "mime_type": "image/jpeg",
+        "size": "12.3 KB"}, {"revision": 52, "rev": "341f47d8b3", "thumb_exists":
+        false, "bytes": 0, "modified": "Mon, 10 Feb 2014 19:06:53 +0000", "path":
+        "/test", "is_dir": true, "icon": "folder", "root": "dropbox", "size": "0 bytes"},
+        {"revision": 6, "rev": "61f47d8b3", "thumb_exists": false, "bytes": 9, "modified":
+        "Mon, 10 Feb 2014 18:11:25 +0000", "client_mtime": "Mon, 10 Feb 2014 18:11:25
+        +0000", "path": "/test ,|!@#$%^&*{b}[].;''.,<>?:-1392055876.txt", "is_dir":
+        false, "icon": "page_white_text", "root": "dropbox", "mime_type": "text/plain",
+        "size": "9 bytes"}, {"revision": 10, "rev": "a1f47d8b3", "thumb_exists": false,
+        "bytes": 9, "modified": "Mon, 10 Feb 2014 18:14:03 +0000", "client_mtime":
+        "Mon, 10 Feb 2014 18:14:03 +0000", "path": "/test ,|!@#$%^&*{b}[].;''.,<>?:.txt",
+        "is_dir": false, "icon": "page_white_text", "root": "dropbox", "mime_type":
+        "text/plain", "size": "9 bytes"}, {"revision": 7, "rev": "71f47d8b3", "thumb_exists":
+        false, "bytes": 9, "modified": "Mon, 10 Feb 2014 18:11:26 +0000", "client_mtime":
+        "Mon, 10 Feb 2014 18:11:26 +0000", "path": "/test \u0142o\u0142\u0105\u00f3-1392055876.txt",
+        "is_dir": false, "icon": "page_white_text", "root": "dropbox", "mime_type":
+        "text/plain", "size": "9 bytes"}, {"revision": 11, "rev": "b1f47d8b3", "thumb_exists":
+        false, "bytes": 9, "modified": "Mon, 10 Feb 2014 18:14:04 +0000", "client_mtime":
+        "Mon, 10 Feb 2014 18:14:04 +0000", "path": "/test \u0142o\u0142\u0105\u00f3.txt",
+        "is_dir": false, "icon": "page_white_text", "root": "dropbox", "mime_type":
+        "text/plain", "size": "9 bytes"}, {"revision": 5, "rev": "51f47d8b3", "thumb_exists":
+        false, "bytes": 9, "modified": "Mon, 10 Feb 2014 18:11:24 +0000", "client_mtime":
+        "Mon, 10 Feb 2014 18:11:24 +0000", "path": "/test-1392055876.txt", "is_dir":
+        false, "icon": "page_white_text", "root": "dropbox", "mime_type": "text/plain",
+        "size": "9 bytes"}, {"revision": 45, "rev": "2d1f47d8b3", "thumb_exists":
+        false, "bytes": 0, "modified": "Mon, 10 Feb 2014 18:59:13 +0000", "path":
+        "/test-1392058752", "is_dir": true, "icon": "folder", "root": "dropbox", "size":
+        "0 bytes"}, {"revision": 9, "rev": "91f47d8b3", "thumb_exists": false, "bytes":
+        9, "modified": "Mon, 10 Feb 2014 18:14:02 +0000", "client_mtime": "Mon, 10
+        Feb 2014 18:14:02 +0000", "path": "/test.txt", "is_dir": false, "icon": "page_white_text",
+        "root": "dropbox", "mime_type": "text/plain", "size": "9 bytes"}], "icon":
+        "folder"}'
+    http_version:
+  recorded_at: Mon, 10 Feb 2014 20:28:55 GMT
+recorded_with: VCR 2.8.0

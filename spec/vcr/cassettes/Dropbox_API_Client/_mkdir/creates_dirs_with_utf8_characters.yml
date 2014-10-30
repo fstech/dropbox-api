@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.dropbox.com/1/fileops/create_folder
+    body:
+      encoding: US-ASCII
+      string: path=awesome-tests-%C5%82%C3%B3%C5%82%C4%85&root=dropbox
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OAuth gem v0.4.7
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Authorization:
+      - XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 10 Feb 2014 20:37:11 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - gvc=MTA1OTQ0Mzg2MTgyMjcxNTQ0ODI5MDI0ODI2NjIzNjA5NzQ5Nzg4; expires=Sat, 09
+        Feb 2019 20:37:11 GMT; Path=/; httponly
+      X-Server-Response-Time:
+      - '142'
+      X-Dropbox-Request-Id:
+      - 14136af946b9c4de18718963c423435b
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Dropbox-Http-Protocol:
+      - None
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Requestid:
+      - 3784fd5ef1f0bb4747a76d2fa8cee123
+    body:
+      encoding: UTF-8
+      string: '{"revision": 78, "rev": "4e1f47d8b3", "thumb_exists": false, "bytes":
+        0, "modified": "Mon, 10 Feb 2014 20:37:11 +0000", "path": "/awesome-tests-\u0142\u00f3\u0142\u0105",
+        "is_dir": true, "icon": "folder", "root": "dropbox", "size": "0 bytes"}'
+    http_version: 
+  recorded_at: Mon, 10 Feb 2014 20:37:12 GMT
+recorded_with: VCR 2.8.0

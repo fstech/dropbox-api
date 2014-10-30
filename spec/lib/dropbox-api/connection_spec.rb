@@ -71,7 +71,7 @@ describe Dropbox::API::Connection do
       end.should raise_error(Dropbox::API::Error, '406 - bad request bar')
     end
 
-    it "raises a Dropbox::API::Error when the response is a 406" do
+    it "raises a Dropbox::API::Error when the response is a 429" do
       response = double :code => 429, :body => '{ "error": "rate limited" }'
       lambda do
         @connection.request { response }

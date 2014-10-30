@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.dropbox.com/1/search/dropbox/awesome-tests?query=foo.txt
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OAuth gem v0.4.7
+      Authorization:
+      - XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 10 Feb 2014 20:29:11 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '72'
+      X-Dropbox-Request-Id:
+      - f47c688ffb5e9c74dae3883a92315928
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Dropbox-Http-Protocol:
+      - None
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Requestid:
+      - 4b2cf80d64dc6ad41bfce0d5b49e4f73
+    body:
+      encoding: UTF-8
+      string: '[{"revision": 47, "rev": "2f1f47d8b3", "thumb_exists": false, "bytes":
+        9, "modified": "Mon, 10 Feb 2014 19:03:45 +0000", "client_mtime": "Mon, 10
+        Feb 2014 19:03:45 +0000", "path": "/awesome-tests/delta-test-foo.txt", "is_dir":
+        false, "icon": "page_white_text", "root": "dropbox", "mime_type": "text/plain",
+        "size": "9 bytes"}]'
+    http_version: 
+  recorded_at: Mon, 10 Feb 2014 20:29:12 GMT
+recorded_with: VCR 2.8.0

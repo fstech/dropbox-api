@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.dropbox.com/1/search/dropbox/?query=foo.txt
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OAuth gem v0.4.7
+      Authorization:
+      - XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 10 Feb 2014 20:50:12 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '43'
+      X-Dropbox-Request-Id:
+      - ea5aa167d113aff0c0da6538a0a1f2cb
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Dropbox-Http-Protocol:
+      - None
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Requestid:
+      - cd0a0c40feaa2d96119d18a731341d29
+    body:
+      encoding: UTF-8
+      string: '[{"revision": 109, "rev": "6d1f47d8b3", "thumb_exists": false, "bytes":
+        9, "modified": "Mon, 10 Feb 2014 20:49:35 +0000", "client_mtime": "Mon, 10
+        Feb 2014 18:12:21 +0000", "path": "/foo2.txt", "is_dir": false, "icon": "page_white_text",
+        "root": "dropbox", "mime_type": "text/plain", "size": "9 bytes"}]'
+    http_version: 
+  recorded_at: Mon, 10 Feb 2014 20:50:13 GMT
+recorded_with: VCR 2.8.0
