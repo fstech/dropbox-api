@@ -73,8 +73,8 @@ request_token.authorize_url(:oauth_callback => 'http://yoursite.com/callback')
 # This would be typically run in a Rails controller
 hash = { oauth_token: session[:token], oauth_token_secret: session[:token_secret]}
 request_token  = OAuth::RequestToken.from_hash(consumer, hash)
-oauth_verifier = params[:oauth_verifier]
-result = request_token.get_access_token(:oauth_verifier => oauth_verifier)
+oauth_token = params[:oauth_token]
+result = request_token.get_access_token(:oauth_verifier => oauth_token)
 ```
 
 Now that you have the oauth token and secret, you can create a new instance of the Dropbox::API::Client, like this:
