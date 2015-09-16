@@ -53,35 +53,29 @@ module Dropbox
           end
         end
 
-        def get_raw(endpoint, path, data = {}, headers = {})
+        def method_missing(name, *args, &block)
+          endpoint, path, data, headers = args[0], args[1], args[2], args[3]
           query = Dropbox::API::Util.query(data)
-          request(:raw => true) do
-            token(endpoint).get "#{Dropbox::API::Config.prefix}#{path}?#{URI.parse(URI.encode(query))}", headers
+          case name
+            when 'get_raw'
+              request(:raw => true) do
+                token(endpoint).get "#{Dropbox::API::Config.prefix}#{path}?#{URI.parse(URI.encode(query))}", headers
+              end
+            when 'get'
+              request do
+                token(endpoint).get "#{Dropbox::API::Config.prefix}#{path}?#{URI.parse(URI.encode(query))}", headers
+              end
+            when 'post'
+              request do
+                token(endpoint).post "#{Dropbox::API::Config.prefix}#{path}", data, headers
+              end
+            when 'put'
+              request do
+                token(endpoint).put "#{Dropbox::API::Config.prefix}#{path}", data, headers
+              end
           end
         end
-
-        def get(endpoint, path, data = {}, headers = {})
-          query = Dropbox::API::Util.query(data)
-          request do
-            token(endpoint).get "#{Dropbox::API::Config.prefix}#{path}?#{URI.parse(URI.encode(query))}", headers
-          end
-        end
-
-        def post(endpoint, path, data = {}, headers = {})
-          request do
-            token(endpoint).post "#{Dropbox::API::Config.prefix}#{path}", data, headers
-          end
-        end
-
-        def put(endpoint, path, data = {}, headers = {})
-          request do
-            token(endpoint).put "#{Dropbox::API::Config.prefix}#{path}", data, headers
-          end
-        end
-
       end
-
     end
-
   end
 end
