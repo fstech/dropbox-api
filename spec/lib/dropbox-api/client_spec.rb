@@ -222,8 +222,12 @@ describe Dropbox::API::Client do
       @client.upload delete_filename, 'Some file'
       response = @client.delta
       cursor, files = response.cursor, response.entries
-      files.last.path.should == delete_filename
-      files.last.destroy
+      delta_file = files.last
+      if delta_file.path == Dropbox::Spec.test_dir
+        delta_file = files.at(-2)
+      end
+      delta_file.path.should == delete_filename
+      delta_file.destroy
       @client.upload filename, 'Another file'
       response = @client.delta(cursor)
       cursor, files = response.cursor, response.entries

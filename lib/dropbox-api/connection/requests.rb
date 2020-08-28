@@ -8,7 +8,7 @@ module Dropbox
         def request(options = {})
           response = yield
           raise Dropbox::API::Error::ConnectionFailed if !response
-          status = response.code.to_i
+          status = (response.respond_to?(:code) ? response.code : response.status).to_i
           case status
             when 400
               parsed = MultiJson.decode(response.body)
@@ -55,27 +55,47 @@ module Dropbox
 
         def get_raw(endpoint, path, data = {}, headers = {})
           query = Dropbox::API::Util.query(data)
+          request_url = "#{Dropbox::API::Config.prefix}#{path}?#{URI.parse(URI.encode(query))}"
           request(:raw => true) do
-            token(endpoint).get "#{Dropbox::API::Config.prefix}#{path}?#{URI.parse(URI.encode(query))}", headers
+            if token.is_a?(::OAuth2::AccessToken)
+              token(endpoint).get request_url, :headers => headers, :raise_errors => false
+            else
+              token(endpoint).get request_url, headers
+            end
           end
         end
 
         def get(endpoint, path, data = {}, headers = {})
           query = Dropbox::API::Util.query(data)
+          request_url = "#{Dropbox::API::Config.prefix}#{path}?#{URI.parse(URI.encode(query))}"
           request do
-            token(endpoint).get "#{Dropbox::API::Config.prefix}#{path}?#{URI.parse(URI.encode(query))}", headers
+            if token.is_a?(::OAuth2::AccessToken)
+              token(endpoint).get request_url, :headers => headers, :raise_errors => false
+            else
+              token(endpoint).get request_url, headers
+            end
           end
         end
 
         def post(endpoint, path, data = {}, headers = {})
+          request_url = "#{Dropbox::API::Config.prefix}#{path}"
           request do
-            token(endpoint).post "#{Dropbox::API::Config.prefix}#{path}", data, headers
+            if token.is_a?(::OAuth2::AccessToken)
+              token(endpoint).post request_url, :body => data, :headers => headers, :raise_errors => false
+            else
+              token(endpoint).post request_url, data, headers
+            end
           end
         end
 
         def put(endpoint, path, data = {}, headers = {})
+          request_url = "#{Dropbox::API::Config.prefix}#{path}"
           request do
-            token(endpoint).put "#{Dropbox::API::Config.prefix}#{path}", data, headers
+            if token.is_a?(::OAuth2::AccessToken)
+              token(endpoint).put request_url, :body => data, :headers => headers, :raise_errors => false
+            else
+              token(endpoint).put request_url, data, headers
+            end
           end
         end
 

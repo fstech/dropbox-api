@@ -1,5 +1,6 @@
 app_key:    # CONSUMER KEY
 app_secret: # CONSUMER SECRET
 token:      # ACCESS TOKEN
-secret:     # ACCESS SECRET
+secret:     # ACCESS SECRET (for oauth1 only)
 mode:       # 'sandbox' or 'dropbox'
+type:       # 'oauth2' or 'oauth' (default)
