@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'multi_json', '~> 1.10'
   s.add_dependency 'oauth', '~> 0.4.7'
   s.add_dependency 'hashie', '~> 3.4.0'
+  s.add_dependency 'oauth2', '~> 1.0'
 
   s.add_development_dependency 'rspec','2.14.1'
   s.add_development_dependency 'rake', '10.1.0'
